@@ -52,7 +52,7 @@ def group_features(corr_matrix, threshold):
     components = find_connected_components(graph)
     return components
 
-file_path = "testA.csv"
+file_path = "test.csv"
 try:
     np.set_printoptions(
         precision=3,
