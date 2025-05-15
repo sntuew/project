@@ -25,7 +25,7 @@ np.fill_diagonal(mod_corr_matrix, -1)
 mod_corr_matrix[mod_corr_matrix == 1] = 0.99
 np.fill_diagonal(mod_corr_matrix, 1)
 corr_matrix = mod_corr_matrix
-R = 0.63
+R = float(input("Введите пороговое значение = "))
 N = corr_matrix.shape[0]
 graph = {}
 remaining_indices = list(range(N))
