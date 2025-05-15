@@ -20,6 +20,11 @@ for i in range(data.shape[1]):
             corr = 0
         corr_matrix[i, j] = corr
 corr_matrix = np.round(corr_matrix,3)
+mod_corr_matrix = corr_matrix.copy()
+np.fill_diagonal(mod_corr_matrix, -1)
+mod_corr_matrix[mod_corr_matrix == 1] = 0.99
+np.fill_diagonal(mod_corr_matrix, 1)
+corr_matrix = mod_corr_matrix
 R = 0.63
 N = corr_matrix.shape[0]
 graph = {}
@@ -72,7 +77,6 @@ for node in graph:
                 for neighbor, weight in graph.get(current_node, []):
                     if weight >= R and neighbor not in visited:
                         stack.append(neighbor)
-
         if group:
             groups.append(group)
 all_nodes = set(graph.keys())
